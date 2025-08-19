@@ -2,30 +2,34 @@
 
 import funcionarios from "./funcionarios.json" with {type: "json"}
 
-function criarImagem(funcionarios) {
+const container = document.getElementById('container')
 
-    const container = document.createElement('container')
-    const card = document.createElement('card')
+function criarCard(funcionarios) {
+
+    
+    const card = document.createElement('div')
     const imagem = document.createElement('img')
     const cargo = document.createElement('span')
     const nome = document.createElement('p')
 
     card.className = 'card'
+    imagem.className = 'imagem'
+    cargo.className = 'cargo'
+    nome.className = 'nome'
 
     imagem.src = './img/' + funcionarios.imagem
-    
-    nome.src = funcionarios.nome
-    
-    cargo.src = funcionarios.cargo
+    nome.textContent = funcionarios.nome
+    cargo.textContent = funcionarios.cargo
 
     card.appendChild(imagem)
+    card.appendChild(nome)
+    card.appendChild(cargo)
 
     container.appendChild(card)
 }
 
-function carregarImagem() {
-    console.log(funcionarios)
-    funcionarios.forEach(criarImagem)
+function carregarCard() {
+    funcionarios.forEach(criarCard)
 }
 
-carregarImagem()
+carregarCard()
